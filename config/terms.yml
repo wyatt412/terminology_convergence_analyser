@@ -1,6 +1,13 @@
 Hashtag:
   variants:
-- hashtag
-- الهاشتاغ
-- الوسم
-- علامة التصنيف
+- form: hashtag
+  needs_disambiguation: false
+  
+- form: الهاشتاغ
+  needs_disambiguation: false
+  
+- form: الوسم
+  needs_disambiguation: true
+  
+- form: علامة التصنيف
+  needs_disambiguation: false
