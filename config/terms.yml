@@ -1,13 +1,13 @@
 Hashtag:
   variants:
 - form: hashtag
-  needs_disambiguation: false
+  needs_purity_estimation: false
   
 - form: الهاشتاغ
-  needs_disambiguation: false
+  needs_putiry_estimation: false
   
 - form: الوسم
-  needs_disambiguation: true
+  needs_putiry_estimation: true
   
 - form: علامة التصنيف
-  needs_disambiguation: false
+  needs_putiry_estimation: false
