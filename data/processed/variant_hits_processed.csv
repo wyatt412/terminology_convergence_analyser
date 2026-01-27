@@ -1,0 +1,5 @@
+concept,variant,hits,export_file,purity_p,sample_n,adjusted_hits
+hashtag,هاشتاغ,11632,hashtag__هاشتاغ.csv,,,
+hashtag,علامة التصنيف,491,hashtag__علامة التصنيف.csv,,,
+hashtag,وسم,81463,hashtag__وسم.csv,0.16,100.0,13034.08
+hashtag,hashtag,73,hashtag__hashtag.csv,,,
