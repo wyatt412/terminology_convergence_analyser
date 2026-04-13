@@ -33,14 +33,15 @@ To address this, the pipeline includes an optional **sampling-based purity estim
 - A small concordance sample is manually annotated  
 - The proportion of target meaning is estimated as *p*  
 - The total frequency is adjusted as:
-
+```
 effective_hits = total_hits × p
-
+```
 This allows the model to account for semantic noise without requiring full-scale disambiguation.
 
 For variants without ambiguity, raw hit counts are used directly.
 
 ## Repository Structure
+```
 config/
   terms.yml              # concept and variant definitions
   rules.yml              # (legacy / optional)
@@ -59,23 +60,30 @@ notebooks/
 src/                     # reserved for future modularisation
 
 README.md
+```
 
 ## How to Use
 
 1. Place Sketch Engine concordance exports in:
+```
 data/raw/
-
+```
 2. Run:
+```
 notebooks/01_extract_hits.ipynb
-
+```
 3. (Optional) If a variant is ambiguous:
+```
 notebooks/03_purity_estimation.ipynb
-
+```
 4. Run:
+```
 notebooks/02_convergence_analysis.ipynb
-
+```
 Outputs will be saved in:
+```
 data/processed/
+```
 
 ## Example
 
@@ -84,7 +92,6 @@ The repository includes an example analysis for the concept *hashtag*, comparing
 - وسم
 - هاشتاغ
 - علامة التصنيف
-- hashtag
 
 The results illustrate how usage is distributed and whether convergence occurs.
 
