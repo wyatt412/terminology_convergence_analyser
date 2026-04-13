@@ -1,8 +1,102 @@
 # Terminology Convergence Analyser
-A lightweight, reproducible workflow for analysing competing lexical variants of the same concepts in large corpora.
-The project focuses on **variant identification, normalisation, contextual disambiguation**, and **dominance scoring**.
+A lightweight, reproducible pipeline for analysing **terminology convergence** across variant forms, using corpus-derived frequency data.
 
-Although the case study uses Arabic, a very lexically abundant language where this analyser comes to its usage, the workflow aims to be **language-agnostic**, and hopefully can be adapted to other languages and domains.
+This project is designed for linguistic and language technology research, where a single concept (e.g. *hashtag*) may appear in multiple competing variants (e.g. Arabic forms such as وسم, هاشتاغ, علامة التصنيف).
+
+Rather than relying on manual interpretation, this tool provides a **data-driven approach** to measure:
+
+- how frequently each variant is used
+- whether one variant dominates
+- how strongly usage converges across variants
+
+## Method Overview
+
+The pipeline follows a simple but extensible workflow:
+
+1. Define a concept and its candidate variants  
+2. Export concordance data for each variant from Sketch Engine  
+3. Extract total hit counts from concordance metadata  
+4. (Optional) Estimate semantic purity for ambiguous variants  
+5. Compute effective frequencies and convergence metrics  
+6. Output structured results for analysis or visualisation
+
+### Semantic Purity Adjustment (Optional)
+
+Some variants may be **semantically ambiguous**.
+
+For example, the Arabic term *وسم* can mean:
+- hashtag (target meaning)
+- label / marking (non-target meaning)
+
+To address this, the pipeline includes an optional **sampling-based purity estimation step**:
+
+- A small concordance sample is manually annotated  
+- The proportion of target meaning is estimated as *p*  
+- The total frequency is adjusted as:
+
+effective_hits = total_hits × p
+
+This allows the model to account for semantic noise without requiring full-scale disambiguation.
+
+For variants without ambiguity, raw hit counts are used directly.
+
+## Repository Structure
+config/
+  terms.yml              # concept and variant definitions
+  rules.yml              # (legacy / optional)
+
+data/
+  raw/                   # Sketch Engine exports (one file per variant)
+  processed/             # extracted frequencies and computed metrics
+  sample/                # manually labelled samples for purity estimation
+  output_example/        # example outputs (optional)
+
+notebooks/
+  01_extract_hits.ipynb
+  02_convergence_analysis.ipynb
+  03_purity_estimation.ipynb
+
+src/                     # reserved for future modularisation
+
+README.md
+
+## How to Use
+
+1. Place Sketch Engine concordance exports in:
+data/raw/
+
+2. Run:
+notebooks/01_extract_hits.ipynb
+
+3. (Optional) If a variant is ambiguous:
+notebooks/03_purity_estimation.ipynb
+
+4. Run:
+notebooks/02_convergence_analysis.ipynb
+
+Outputs will be saved in:
+data/processed/
+
+## Example
+
+The repository includes an example analysis for the concept *hashtag*, comparing variants such as:
+
+- وسم
+- هاشتاغ
+- علامة التصنيف
+- hashtag
+
+The results illustrate how usage is distributed and whether convergence occurs.
+
+## Project Scope
+
+This repository is intended as a **methodological tool**, not a fixed dataset.
+
+It can be applied to:
+- any concept with competing variants
+- any language supported by corpus tools such as Sketch Engine
+
+The included examples serve only as demonstrations of the workflow.
 
 ## What does this project does
 
@@ -17,28 +111,8 @@ The workflow produces:
 - a convergence label (strong / medium / weak)
 - simple visualisations (variant distribution)
 
-## Workflow (high level)
+## Future Work
 
-1. **Variant specification** (concept → variant list)
-2. **Corpus querying** (via corpus tool; exports as input)
-3. **Normalisation** (merge known surface variations)
-4. **Disambiguation (optional)** using concordance filtering rules
-5. **Metrics & reporting** (dominance scoring + plots)
-
-## Repository structure
-
-- 'docs/' - diagrams and documentation
-- 'data/sample/' - small representative samples
-- 'notebooks/' - demo notebooks
-- 'src/' - scripts/modules (to be added)
-
-## Data note
-
-This corpus does **not** contain full dumps of certain corpus.
-Instead, it uses **small representative samples** (e.g. 100 concordance lines) for demonstrating the workflow. Please note that this is a common practice due to corpus access and licensing constraints.
-
-## Next steps
-
-- Add 'config/terms.yml' to store concept-variant mappings
-- Add a demo disambiguation example (e.g., filtering ambiguous variants using simple markers)
-- Generate 1-2 plots for variant distributions
+- Integration with APIs for automated data collection
+- Modularisation of notebook logic into reusable functions
+- Improved visualisation of convergence patterns
