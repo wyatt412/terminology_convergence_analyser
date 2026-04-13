@@ -55,7 +55,7 @@ data/
 notebooks/
   01_extract_hits.ipynb
   02_convergence_analysis.ipynb
-  03_purity_estimation.ipynb
+  op_purity_estimation.ipynb
 
 src/                     # reserved for future modularisation
 
@@ -74,7 +74,7 @@ notebooks/01_extract_hits.ipynb
 ```
 3. (Optional) If a variant is ambiguous:
 ```
-notebooks/03_purity_estimation.ipynb
+notebooks/op_purity_estimation.ipynb
 ```
 4. Run:
 ```
