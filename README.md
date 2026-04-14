@@ -1,13 +1,37 @@
 # Terminology Convergence Analyser
-A lightweight, reproducible pipeline for analysing **terminology convergence** across variant forms, using corpus-derived frequency data.
 
-This project is designed for linguistic and language technology research, where a single concept (e.g. *hashtag*) may appear in multiple competing variants (e.g. Arabic forms such as وسم, هاشتاغ, علامة التصنيف).
+This repository implements the lexicometric methodology developed in my MSc dissertation at the University of Edinburgh.
 
-Rather than relying on manual interpretation, this tool provides a **data-driven approach** to measure:
+It provides a lightweight, reproducible pipeline for analysing **terminology convergence** across competing variant forms using corpus-derived frequency data.
 
-- how frequently each variant is used
-- whether one variant dominates
-- how strongly usage converges across variants
+The tool is designed for linguistic and language technology research, where a single concept (for example, *hashtag*) may appear in multiple competing variants (such as Arabic forms like `وسم`, `هاشتاغ`, and `علامة التصنيف`).
+
+Rather than relying on impressionistic interpretation, the pipeline supports a **data-driven analysis** of:
+
+- variant frequency
+- dominance patterns
+- convergence strength across competing forms
+
+## Theoretical Background
+
+This project adopts a simple lexicometric approach to terminology convergence.
+
+Let:
+
+- \( f_i \) denote the observed frequency of variant \( i \)
+- \( p_i \) denote the semantic purity of variant \( i \), when ambiguity is present
+
+For ambiguous variants, the pipeline estimates an adjusted frequency:
+```
+effective_hits_i = f_i × p_i
+```
+For non-ambiguous variants, the raw frequency is used directly.
+
+The degree of convergence is then captured through the **dominance ratio**, defined as the share of the most frequent variant among all competing forms:
+```
+D = max(effective_hits_i / Σ effective_hits_i)
+```
+A higher dominance ratio indicates stronger convergence toward a single preferred variant.
 
 ## Method Overview
 
