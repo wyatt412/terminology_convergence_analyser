@@ -1,6 +1,0 @@
-الوسم:
-  strategy: marker
-  keep_if_contains:
-    - "#"
-    - "هاشتاغ"
-    - "hashtag"
