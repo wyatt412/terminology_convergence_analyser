@@ -49,7 +49,7 @@ The pipeline follows a simple but extensible workflow:
 ```mermaid
 graph TD
 A[Sketch Engine CSV] --> B[Extract Hits]
-B --> C[Purity Estimation (optional)]
+B --> C[Purity Estimation - optional]
 C --> D[Convergence Analysis]
 D --> E[Metrics Output]
 ```
