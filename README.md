@@ -137,19 +137,6 @@ It can be applied to:
 
 The included examples serve only as demonstrations of the workflow.
 
-## What does this project does
-
-Given:
-- a concept (e.g., "Hashtag")
-- a list of candidate variants (surface forms)
-- (optional) concordance samples exported a corpus tool
-
-The workflow produces:
-- frequency table for each variant
-- dominance ratio (share of the most frequent variant)
-- a convergence label (strong / medium / weak)
-- simple visualisations (variant distribution)
-
 ## Future Work
 
 - Integration with APIs for automated data collection
