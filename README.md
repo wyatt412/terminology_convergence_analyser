@@ -78,8 +78,7 @@ For variants without ambiguity, raw hit counts are used directly.
 ```
 config/
   terms.yml              # concept and variant definitions
-  rules.yml              # (legacy / optional)
-
+  
 data/
   raw/                   # Sketch Engine exports (one file per variant)
   processed/             # extracted frequencies and computed metrics
