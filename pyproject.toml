@@ -1,7 +1,7 @@
 [project]
 name = "tca"
 version = "0.1.0"
-desription = "Terminology Convergence Analyser"
+description = "Terminology Convergence Analyser"
 authors = [{name = "Wyatt", email = "wyt15858810001@163.com"}]
 readme = "README.md"
 license = {text = "MIT"}
